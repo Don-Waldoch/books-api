@@ -42,8 +42,7 @@ books.get('/seed', (req, res) => {
 
 // Individual book
 books.get('/:id', (req, res) => {
-  let id = req.params.id
-  Book.findById(id)
+  Book.findById(req.params.id)
   .then(foundBook => {
     res.json(foundBook)
   })
@@ -74,7 +73,6 @@ books.post('/', (req, res) => {
 })
 
 books.put('/:id', (req, res) => {
-  let id = req.params.id
   Book.findByIdAndUpdate(req.params.id, req.body, { new: true }) 
     .then(updatedBook => {
       res.json(updatedBook)
